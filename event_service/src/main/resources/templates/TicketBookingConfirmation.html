@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+
+<body>
+	<style>
+		table,
+		th,
+		td {
+			border: 1px solid black;
+			font-weight: bold
+		}
+
+		span.thick {
+			font-weight: bold;
+		}
+	</style>
+	<p>
+		Hello, <span class="thick"> ${name} </span>,
+		<br><br />
+		Your ticket booking is confirmed.
+		<br />
+	</p>
+	<table style="width:100%">
+		<tr style="background-color:#393939;">
+			<td colspan="4" style="text-align: center; background-color:#393939; color:
+               #E8E8E8; padding:1.5em 2.5em 1.5em 2.5em ;font-weight: 400;
+               font-size: 1.125em;">
+				<span class="thick" style="color :#FC7500;">EVENT BOOKING SYSTEM</span>
+			</td>
+		</tr>
+		<tr>
+			<th colspan="4" style="text-align: center; font-size: .8em;">Booking Details</th>
+		</tr>
+		<tr>
+			<td>Event Name</td>
+			<td>${eventName}</td>
+		</tr>
+		<tr>
+			<td>Event Date</td>
+			<td>${eventDate}</td>
+		</tr>
+		<tr>
+			<td>Event Location</td>
+			<td>${eventLocation}</td>
+		</tr>
+		<tr>
+			<td>User Name</td>
+			<td>${userName}</td>
+		</tr>
+		<tr>
+			<td>Ticket Type</td>
+			<td>${ticketType}</td>
+		</tr>
+		<tr>
+			<td>Number Of Tickets</td>
+			<td>${numberOfTickets}</td>
+		</tr>
+		<tr>
+			<td>Payment Amount</td>
+			<td>${paymentAmount} AED</td>
+		</tr>
+		<tr>
+			<td colspan="4" style="text-align: center; font-size: .8em;">*This is an auto-generated message -
+				Please do not reply to this message*
+			</td>
+		</tr>
+		<tr width=100% style="background-color:#393939;">
+			<td colspan="4" width=33.3% style="text-align: center;">
+				<span style="color: #FFFFFF; font-size: 0.5em;"> © 2024 Event Booking System • All rights reserved
+				</span>
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>
