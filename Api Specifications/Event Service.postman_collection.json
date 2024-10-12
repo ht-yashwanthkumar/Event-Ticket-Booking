@@ -1,0 +1,221 @@
+{
+	"info": {
+		"_postman_id": "1fd1dce9-931c-423c-b3d0-158c9dc37aa4",
+		"name": "Event Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2336983"
+	},
+	"item": [
+		{
+			"name": "Save Event",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Music Concert\",\r\n    \"description\": \"Justin Vives\",\r\n    \"venue\": \"Bengaluru\",\r\n    \"startDateTime\": \"Tue, 29 Oct 2024 18:07:59 IST\",\r\n    \"capacity\": 500,\r\n    \"publisherUserId\": 1,\r\n    \"eventStatus\": \"Not Started\",\r\n    \"ticketPrices\": [\r\n        {\r\n            \"ticketType\": \"VIP\",\r\n            \"price\": 30000\r\n        },\r\n        {\r\n            \"ticketType\": \"Premium\",\r\n            \"price\": 20000\r\n        },\r\n        {\r\n            \"ticketType\": \"Gallery\",\r\n            \"price\": 10000\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/event-service/event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"event-service",
+						"event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8765/event-service/event",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"event-service",
+						"event"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book Event Tickets",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"userId\": \"1\",\r\n    \"ticketDtos\": [\r\n        {\r\n            \"numberOfTickets\": \"1\",\r\n            \"ticketType\": \"Premium\"\r\n        },\r\n        {\r\n            \"numberOfTickets\": \"1\",\r\n            \"ticketType\": \"VIP\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/event-service/event/1/tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"event-service",
+						"event",
+						"1",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Event",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Music Concert\",\r\n    \"description\": \"Justin Vives\",\r\n    \"venue\": \"Bengaluru\",\r\n    \"startDateTime\": \"Tue, 29 Oct 2024 18:07:59 IST\",\r\n    \"capacity\": 500,\r\n    \"publisherUserId\": 1,\r\n    \"eventStatus\": \"Not Started\",\r\n    \"ticketPrices\": [\r\n        {\r\n            \"ticketType\": \"VIP\",\r\n            \"price\": 40000\r\n        },\r\n        {\r\n            \"ticketType\": \"Premium\",\r\n            \"price\": 20000\r\n        },\r\n        {\r\n            \"ticketType\": \"Gallery\",\r\n            \"price\": 10000\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/event-service/event/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"event-service",
+						"event",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Event",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8765/event-service/event/1?userId=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"event-service",
+						"event",
+						"1"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Event By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8765/event-service/event/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"event-service",
+						"event",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Issued Tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8765/event-service/event/1/tickets",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"event-service",
+						"event",
+						"1",
+						"tickets"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Event's Ticket Price",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"pkTicketPriceId\": 1,\r\n        \"ticketType\": \"VIP\",\r\n        \"price\": 50000\r\n    },\r\n    {\r\n        \"pkTicketPriceId\": 2,\r\n        \"ticketType\": \"Premium\",\r\n        \"price\": 20000\r\n    },\r\n    {\r\n        \"pkTicketPriceId\": 3,\r\n        \"ticketType\": \"Gallery\",\r\n        \"price\": 10000\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8765/event-service/event/1/ticket_price",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8765",
+					"path": [
+						"event-service",
+						"event",
+						"1",
+						"ticket_price"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
