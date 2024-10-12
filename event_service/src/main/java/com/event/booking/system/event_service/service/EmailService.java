@@ -1,9 +1,13 @@
 package com.event.booking.system.event_service.service;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -42,23 +46,26 @@ public class EmailService {
 		}
 
 		File inputSqlFile = new File(resource.getFile());
-		Path filePath = Paths.get(inputSqlFile.getAbsolutePath());
-		String template;
-		try {
-			template = Files.readString(filePath);
-			if (template.isEmpty()) {
-				LOGGER.debug("No contents found in email template");
-				return;
+		StringBuilder sb = new StringBuilder();
+		try (BufferedReader readers = new BufferedReader(new FileReader(inputSqlFile))) {
+			String str;
+			while ((str = readers.readLine()) != null) {
+				sb.append(str).append("\n");
 			}
+		} catch (Exception e) {
+			throw new RuntimeException("Exception occurred while fetching data from file");
+		}
+		if (sb.toString().isEmpty()) {
+			LOGGER.debug("No contents found in email template");
+			return;
+		}
 
-			ResponseEntity<ResponseBody<String>> response = notificationClient
-					.sendEmail(getNotificationDto(tickets, sub, template));
-			if (!response.getStatusCode().equals(HttpStatus.OK)) {
-				throw new RuntimeException("Exception occurred while sending email");
-			}
-		} catch (IOException e) {
+		ResponseEntity<ResponseBody<String>> response = notificationClient
+				.sendEmail(getNotificationDto(tickets, sub, sb.toString()));
+		if (!response.getStatusCode().equals(HttpStatus.OK)) {
 			throw new RuntimeException("Exception occurred while sending email");
 		}
+
 	}
 
 	private NotificationDto getNotificationDto(List<Ticket> tickets, String sub, String template) {
